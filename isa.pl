@@ -8,10 +8,10 @@ response(exit, 'Addio e grazie per tutto il pesce!') :- !.
 
 
 response([], [action('Non ho capito, puoi ripetere?')]):- !.
-response([_,'come','stai'], [action('sto bene grazie e tu?')]):- !.
+response([bot_sta], [action('sto bene grazie e tu?')]):- !.
 response(['sono'], [action('sto bene grazie e tu?')]):- !.
 
-response(['ciao'], [action('Ehi ciao!'), 
+response(['saluto'], [action('Ehi ciao!'), 
                     action('Ciao anche a te!'),
                     action('Ciao!'),
                     action('Ciao, sono qui per te!'),
@@ -23,7 +23,42 @@ response(['chi','sono'], [action('Non ti conosco ma mi piacerebbe molto parlare 
                     action('Una persona fantastica? se ti va possiamo scambiare due chiacchere!'),
                     action('Non lo so...!')]):- !.
 
+response([tu_sei,Y], [action(Z),action(Z1),action(Z2)]):- 
+                                            name(Y), 
+                                            atom_concat('Ciao! ',Y,Z),
+                                            atom_concat('Ciao! piacere ',Y,Z1),
+                                            atom_concat('Finalmente so il tuo nome ',Y,Z2), !.
+
 response(Z, [action('Addio e grazie per tutto il pesce!')]):- check_quit(Z), !.
+
+sr([ehi, ciao|X],[saluto|X]).
+sr([ciao|X],[saluto|X]).
+sr([ehi|X],[saluto|X]).
+sr([ohi|X],[saluto|X]).
+sr([salve|X],[saluto|X]).
+sr([come, stai|X],[come_sto|X]).
+sr([come, te, la, passi|X],[come_sto|X]).
+sr([come, va|X],[come_sto|X]).
+sr([saluto, come_sto|X],[bot_sta|X]).
+sr([io, sono, Y|X],[tu_sei, Y|X]):- name(Y).
+sr([,|X],X).
+sr([.|X],X).
+sr([!|X],X).
+sr([?|X],X).
+
+name(giulia).
+name(alessandro).
+
+user_name.
+
+
+simplify(List, Result) :-
+    sr(List, NewList),
+    !,
+    simplify(NewList,Result).
+simplify([W|Words], [W| NewWords]):-
+    simplify(Words,NewWords).
+simplify([],[]).
 
 keyword(come):- !.
 keyword(stai):- !.
@@ -41,7 +76,9 @@ elisa :-
         write('> '),
         read_atomics(Input),nl,
         write('Input: '), write(Input),nl,
-        find_keywords(Input,KeyWords),
+        % find_keywords(Input,KeyWords),
+        simplify(Input,S1),
+        simplify(S1,KeyWords),
         write('Keywords: '), write(KeyWords),nl,
         response(KeyWords, X),nl,
         write('Response: '), write(X),nl,
