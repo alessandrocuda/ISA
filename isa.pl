@@ -46,7 +46,7 @@ keyword(exit):- !.
 % Main
 isa :- 
 	init,
-    write('Ciao. Io sono ISA. Come posso aiutarti?'),nl,
+    write('Hi, I\'m ISA your personal assistant for movies and TV show!\n?'),nl,
     repeat,
         write('> '),
         read_atomics(Input),nl,
