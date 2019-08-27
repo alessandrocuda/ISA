@@ -31,15 +31,24 @@ sr([help | X], [suggest | X]).
 sr([can | X], X).
 sr([to | X], X).
 sr([a | X], X).
+sr([me | X], X).
+sr([somethings | X], X).
+sr([something | X], X).
 sr([choose | X], X).
-sr(['i\'d'|X], X).
+sr([some | X], X).
+sr([i,'\'',d|X], X).
 sr([do|X], X).
 sr([i|X], X).
 sr([see | X],  X).
 sr([watch | X],  X).
 sr([what | X], X).
 sr([like | X], [suggest | X]).
+sr([love | X], [suggest | X]).
 sr([would | X], X).
+sr([want | X], [suggest |X]).
+sr([wanted | X], [suggest |X]).
+
+
 
 
 
