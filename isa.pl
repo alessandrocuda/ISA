@@ -33,27 +33,33 @@ simplify([],[]).
 
 /****************************************************************************/
 % Keyboard List
-keyword(come):- !.
-keyword(stai):- !.
-keyword(sono):- !.
-keyword(ciao):- !.
-keyword(chi):- !.
-keyword(addio):- !.
+keyword(hello):- !.
+keyword(who_bot):- !.
+keyword(how_bot):- !.
 keyword(quit):- !.
 keyword(exit):- !.
+keyword(suggest):- !.
+keyword(movie):- !.
+keyword(movies):- !.
+keyword(tv):- !.
+keyword(show):- !.
+keyword(shows):- !.
+keyword(help):- !.
+keyword(need):- !.
+
 
 /****************************************************************************/
 % Main
 isa :- 
 	init,
-    write('Hi, I\'m ISA your personal assistant for movies and TV show!\n?'),nl,
+    write('Hi, I\'m ISA your personal assistant for movies and TV show!?'),nl,
     repeat,
         write('> '),
         read_atomics(Input),nl,
         write('Input: '), write(Input),nl,
-        % find_keywords(Input,KeyWords),
-        simplify(Input,S1),
-        simplify(S1,KeyWords),
+        simplify(Input, S1),
+        find_keywords(S1,KeyWords),
+        % simplify(S1,KeyWords),
         write('Keywords: '), write(KeyWords),nl,
         response(KeyWords, X),nl,
         write('Response: '), write(X),nl,

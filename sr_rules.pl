@@ -1,3 +1,39 @@
+% % rules order matters!
+% phase 1
+sr(['hello!'|X],[hello|X]).
+sr(['hello,'|X],[hello|X]).
+sr(['hello.'|X],[hello|X]).
+sr([hi|X],[hello|X]).
+sr(['hi!'|X],[hello|X]).
+sr(['hi,'|X],[hello|X]).
+sr(['hi.'|X],[hello|X]).
+sr([cheers|X],[hello|X]).
+sr(['cheers,'|X],[hello|X]).
+sr(['cheers.'|X],[hello|X]).
+sr(['cheers!'|X],[hello|X]).
+sr([how, are, you|X],[how_bot|X]).
+sr([how, have, you|X],[how_bot|X]).
+sr([doing | X], X).
+sr([been | X], X).
+sr([how,'\'',s, everything| X ],[how_bot|X]).
+sr([how, is, everything| X ],[how_bot|X]).
+sr([how,'\'',s,it,going| X ],[how_bot|X]).
+sr([how, is,it,going| X ],[how_bot|X]).
+sr([how,are,things,going| X ],[how_bot|X]).
+sr([what,are,you,up,to| X ],[how_bot|X]).
+sr([whassup| X ],[how_bot|X]).
+sr([what,'\'', s, up| X ],[how_bot|X]).
+sr([what, is, up| X ],[how_bot|X]).
+sr([what,'\'', s, new| X ],[how_bot|X]).
+sr([what, is, new | X ],[how_bot|X]).
+sr([what,'\'', s, new| X ],[how_bot|X]).
+sr([what,'\'', s, going, on| X ],[how_bot|X]).
+sr([what, is, going, on| X ],[how_bot|X]).
+sr([who, are, you | X ],[who_bot|X]).
+sr([who, is, there | X ],[who_bot|X]).
+sr([who, '\'',s, there | X ],[who_bot|X]).
+
+
 sr([what, movie| X], [suggest, movie | X]).
 sr([what, film| X], [suggest, movie | X]).
 sr([what, movies| X], [suggest, movies | X]).
@@ -49,11 +85,6 @@ sr([want | X], [suggest |X]).
 sr([wanted | X], [suggest |X]).
 
 
-
-
-
-
-
 sr([, | X], X).
 sr([; | X], X).
 sr([! | X], X).
@@ -64,21 +95,10 @@ sr(['.' | X], X).
 
 
 
-% % rules order matters!
-% phase 1
-sr([ehi, ciao|X],[saluto|X]).
-sr([ciao|X],[saluto|X]).
-sr([ehi|X],[saluto|X]).
-sr([ohi|X],[saluto|X]).
-sr([salve|X],[saluto|X]).
-sr([come, stai|X],[come_sto|X]).
-sr([come, te, la, passi|X],[come_sto|X]).
-sr([come, va|X],[come_sto|X]).
-sr([io, sono, Y|X],[tu_sei, Y|X]):- name(Y).
-sr([,|X],X).
-sr([.|X],X).
-sr([!|X],X).
-sr([?|X],X).
-% phase 2
-sr([saluto, come_sto|X],[come_sto|X]).
-sr([saluto, tu_sei|X],[tu_sei|X]).
+
+
+
+
+
+
+%sr([i, am, Y|X],[tu_sei, Y|X]):- name(Y).

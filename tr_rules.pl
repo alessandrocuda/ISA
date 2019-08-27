@@ -1,32 +1,36 @@
 check_quit(X) :-  
-        ( member('quit',X) ; member('addio',X); member('exit',X) ), !.
+        ( member('quit',X); member('exit',X) ), !.
 
 
 response(welcome_msg, ' ------------------------------\n|          ISA   v0.0.1        |\n ------------------------------\n|          chatterbot          |\n ------------------------------\n\n') :- !.
-response(exit, 'Addio e grazie per tutto il pesce!') :- !.
+response(exit, 'So Long, and Thanks for All the Fish!') :- !.
 
 
-response([], [action('Non ho capito, puoi ripetere?')]):- !.
-response([come_sto], [action('sto bene grazie e tu?')]):- !.
-response(['sono'], [action('sto bene grazie e tu?')]):- !.
+response([], [action('sorry I didn\'t understand, can you repeat?')]):- !.
+response([how_bot], [action('I\'m fine thanks! do you need some advice for a movie or tv show?')]):- !.
 
-response(['saluto'], [action('Ehi ciao!'), 
-                    action('Ciao anche a te!'),
-                    action('Ciao!'),
-                    action('Ciao, sono qui per te!'),
-                    action('Ciao, hai bisogno di qualcosa?'),
-                    action('Ciao, come posso aiutarti?!')]):- !.
+response([hello], [action('Oh hi!'), 
+                    action('Hello!'),
+                    action('hi!'),
+                    action('Hello, i\'m here to help! do you need an advice?'),
+                    action('hi, do you need help?'),
+                    action('hi, how can i help you?!')]):- !.
 
-response(['chi','sono'], [action('Non ti conosco ma mi piacerebbe molto parlare con te!'), 
-                    action('Non saprei!'),
-                    action('Una persona fantastica? se ti va possiamo scambiare due chiacchere!'),
-                    action('Non lo so...!')]):- !.
+response([who_bot], [action('Hi, I\'m your personal assistant, how can I help you?'), 
+                    action('Hi, I\'m ISA, your personal assistant for tv shows and movies'),
+                    action('Hi, I\'m ISA!'),
+                    action('Hi, I\'m a super computer here to help you choose a movie or a TV series')]):- !.
 
-response([tu_sei,Y], [action(Z),action(Z1),action(Z2)]):- 
+
+
+
+
+
+response([you_are,Y], [action(Z),action(Z1),action(Z2)]):- 
                                             name(Y), 
                                             atom_concat('Ciao! ',Y,Z),
                                             atom_concat('Ciao! piacere ',Y,Z1),
                                             atom_concat('Finalmente so il tuo nome ',Y,Z2), !.
 
-response(Z, [action('Addio e grazie per tutto il pesce!')]):- check_quit(Z), !.
+response(Z, [action('So Long, and Thanks for All the Fish!')]):- check_quit(Z), !.
 
