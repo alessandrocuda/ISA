@@ -3,6 +3,7 @@
 :- ensure_loaded(library(lists)).
 
 :- reconsult('readatom.pl').
+:- reconsult('db.pl').
 :- reconsult('sr_rules.pl').
 :- reconsult('tr_rules.pl').
 :- reconsult('isa.pl').
