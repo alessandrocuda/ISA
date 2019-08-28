@@ -58,7 +58,7 @@ response([suggest, movies], [action(Z), action(Z1), action(Z2), action(Z3), acti
                                         format(atom(Z7), 'Harry Potter\'s magic hat says\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z8), 'This three movies are aswsome!\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z9), 'Everyone has already seen these movies!\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
-                                        format(atom(Z10), 'You might like these three movies!,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
+                                        format(atom(Z10), 'You might like these three movies!,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]).
 
 
 response([suggest, tv, show], [action(Z), action(Z1), action(Z2)]):-  
