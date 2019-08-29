@@ -1,25 +1,30 @@
 check_quit(X) :-  
         ( member('quit',X); member('exit',X) ), !.
 
-
-response(welcome_msg, ' ------------------------------\n|          ISA   v0.0.1        |\n ------------------------------\n|          chatterbot          |\n ------------------------------\n\n') :- !.
 response(exit, 'So Long, and Thanks for All the Fish!') :- !.
 
 
 response([], [action('sorry I didn\'t understand, can you repeat?')]):- !.
-response([how_bot], [action('I\'m fine thanks! do you need some advice for a movie or tv show?')]):- !.
 
 response([hello], [action('Oh hi!'), 
                     action('Hello!'),
                     action('hi!'),
-                    action('Hello, i\'m here to help! do you need an advice?'),
+                    action('Hello, i\'m here to help! do you need an advice for a movie?'),
                     action('hi, do you need help?'),
                     action('hi, how can i help you?!')]):- !.
+
+
 
 response([who_bot], [action('Hi, I\'m your personal assistant, how can I help you?'), 
                     action('Hi, I\'m ISA, your personal assistant for tv shows and movies'),
                     action('Hi, I\'m ISA!'),
                     action('Hi, I\'m a super computer here to help you choose a movie or a TV series')]):- !.
+
+response([hello, who_bot], X):- response([who_bot], X), !.
+
+response([how_bot], [action('I\'m fine thanks! do you need some advice for a movie or tv show?')]):- !.
+response([hello, how_bot], X):- response([how_bot], X), !.
+
 
 response([you_are,Y], [action(Z),action(Z1),action(Z2)]):- 
                                             name(Y), 
@@ -156,7 +161,4 @@ response([suggest, G, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3)
                                         format(atom(Z9), '~w-~w, ~w-~w and ~w-~w', [G, T, G1, T1, G2, T2]),
                                         format(atom(Z10), 'Maybe as a ~w you could watch ~w, or ~w as ~w, or, finally, ~w as ~w ', [G, T, T1, G1, T2, G2]).                                       
 
-
-
-%format('Maybe this one? ~w ', [T]))
-%.
+response([suggest], X) :- random_member(T, [[suggest, movie], [suggest, movies],[suggest, tv,show],[suggest, tv, shows]]), response(T,X), !.

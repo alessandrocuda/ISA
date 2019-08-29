@@ -10,8 +10,14 @@ quit :-
 
 init :-
 	nl,
-	response(welcome_msg, Welcome_msg),
-	write(Welcome_msg).
+    write(' -------------------------------------------------------------------------------------'),nl,
+    write('|                                     ISA v0.9.1                                      |'),nl,
+    write(' -------------------------------------------------------------------------------------'),nl,
+    write('|                      A Personal Assitant for movie and tv show!                     |'),nl,
+    write(' -------------------------------------------------------------------------------------'),nl,
+    write('|   The answer to the ultimate question of life, the universe and everything is 42.   |'),nl,
+    write(' -------------------------------------------------------------------------------------'),nl,nl.
+
 
 /****************************************************************************/
 % find_keywords(+InputList,?KeyWordList)
