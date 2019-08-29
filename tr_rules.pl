@@ -79,6 +79,7 @@ response([suggest, G, movie], [action(Z), action(Z1), action(Z2), action(Z3), ac
                                         format(atom(Z9), 'I\'m your ultimate expert, here\'s a movie: "~w" ', [T]),
                                         format(atom(Z10), 'mmm well, it\'s hard to decide but "~w" is a good movie to watch!', [T]).
 
+%Forse anche questa si potrebbe levare
 response([suggest, G, movies], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         movie_range_id(G, L, U),
                                         random(L, U, ID), movie_title(ID,T), movie_genre(ID,G),
@@ -99,50 +100,79 @@ response([suggest, G, movies], [action(Z), action(Z1), action(Z2), action(Z3), a
 
 response([suggest, tv, show], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         random(2000, 2059, ID), tvshow_title(ID,T), tvshow_genre(ID,G),tvshow_network(ID,N),
-                                        format(atom(Z), 'Maybe you could see ~w', [T]),
-                                        format(atom(Z1), 'If you like ~w genre you might watch ~w', [G,T]),
-                                        format(atom(Z2), '~w is a popular tv show from ~w', [T,N]),
-                                        format(atom(Z3), '~w is a very interesting tv show, I recommend it', [T]),
-                                        format(atom(Z4), 'If you haven\'t done it yet, you can watch ~w', [T]),
-                                        format(atom(Z5), '~w from ~w it\s a very rewarded tv show, you can\'t miss it', [T,N]),
-                                        format(atom(Z6), '~w is a must', [T]),
-                                        format(atom(Z7), 'How about ~w?', [T]),
-                                        format(atom(Z8), '~w is the serie of the moment', [T]),
-                                        format(atom(Z9), 'Shame on you if you have\'t watch ~w yet. Fix it now!', [T]),
-                                        format(atom(Z10), 'Maybe ~w?', [T]).
+                                        format(atom(Z), 'Maybe you could see "~w"', [T]),
+                                        format(atom(Z1), 'If you like ~w genre you might watch "~w"', [G,T]),
+                                        format(atom(Z2), '"~w" is a popular tv show from ~w', [T,N]),
+                                        format(atom(Z3), '"~w" is a very interesting tv show, I recommend it', [T]),
+                                        format(atom(Z4), 'If you haven\'t done it yet, you can watch "~w"', [T]),
+                                        format(atom(Z5), '"~w" from ~w it\s a very rewarded tv show, you can\'t miss it', [T,N]),
+                                        format(atom(Z6), '"~w" is a must', [T]),
+                                        format(atom(Z7), 'How about "~w"?', [T]),
+                                        format(atom(Z8), '"~w" is the serie of the moment', [T]),
+                                        format(atom(Z9), 'Shame on you if you have\'t watch "~w" yet. Fix it now!', [T]),
+                                        format(atom(Z10), 'Maybe "~w"?', [T]).
 
 response([suggest, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         random(2000, 2059, ID), tvshow_title(ID,T), tvshow_genre(ID,G),
                                         random(2000, 2059, ID1), tvshow_title(ID1,T1), tvshow_genre(ID1,G1),
                                         random(2000, 2059, ID2), tvshow_title(ID2,T2), tvshow_genre(ID2,G2),
                                         ID \== ID1, ID1 \== ID2, ID \== ID2,
-                                        format(atom(Z), '~w, ~w and ~w are three good options', [T, T1, T2]), 
-                                        format(atom(Z1), 'I don\'t know which is better between ~w, ~w and ~w', [T, T1, T2]),
-                                        format(atom(Z2), 'If you like ~w genre you might watch ~w, but also ~w and ~w are good series', [G, T, T1, T2]),
-                                        format(atom(Z3), 'A marathon of these three: ~w, ~w and ~w', [T, T1, T2]),
-                                        format(atom(Z4), 'I prefer ~w because ~w is my favorite genre, but also ~w and ~w are quality series', [T, G, T1, T2]),
-                                        format(atom(Z5), 'One of ~w, ~w and ~w', [T, T1, T2]),
-                                        format(atom(Z6), 'These are masterpieces: ~w, ~w and ~w', [T, T1, T2]),
-                                        format(atom(Z7), 'If you like ~w you could watch ~w, but also ~w and ~w are good', [G, T, T1, T2]),
-                                        format(atom(Z8), 'I can\'t choose between ~w, ~w and ~w', [T, T1, T2]),
-                                        format(atom(Z9), '~w-~w, ~w-~w and ~w-~w', [G, T, G1, T1, G2, T2]),
-                                        format(atom(Z10), 'Maybe as a ~w you could watch ~w, or ~w as ~w, or, finally, ~w as ~w ', [G, T, T1, G1, T2, G2]).                                       
+                                        format(atom(Z), '"~w", "~w" and "~w" are three good options', [T, T1, T2]), 
+                                        format(atom(Z1), 'I don\'t know which is better between "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z2), 'If you like ~w genre you might watch "~w", but also "~w" and "~w" are good series', [G, T, T1, T2]),
+                                        format(atom(Z3), 'A marathon of these three: "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z4), 'I prefer "~w" because ~w is my favorite genre, but also "~w" and "~w" are quality series', [T, G, T1, T2]),
+                                        format(atom(Z5), 'One of "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z6), 'These are masterpieces: "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z7), 'If you like ~w you could watch "~w", but also "~w" and "~w" are good', [G, T, T1, T2]),
+                                        format(atom(Z8), 'I can\'t choose between "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z9), 'Mmm...maybe one of "~w", "~w" and "~w"', [T, T1, T2]),
+                                        format(atom(Z10), 'Maybe as a ~w you could watch "~w", or "~w" as ~w, or, finally, "~w" as ~w ', [G, T, T1, G1, T2, G2]).                                       
 
 
-response([suggest, G, tv, show], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
-                                        tvshow_range_id(G, L, U), random(L, U, ID), tvshow_title(ID,T), tvshow_genre(ID,G),tvshow_network(ID,N),
-                                        format(atom(Z), 'Maybe you could see ~w', [T]),
-                                        format(atom(Z1), 'If you like ~w genre you might watch ~w', [G,T]),
-                                        format(atom(Z2), '~w is a popular tv show from ~w', [T,N]),
-                                        format(atom(Z3), '~w is a very interesting tv show, I recommend it', [T]),
-                                        format(atom(Z4), 'If you haven\'t done it yet, you can watch ~w', [T]),
-                                        format(atom(Z5), '~w from ~w it\s a very rewarded tv show, you can\'t miss it', [T,N]),
-                                        format(atom(Z6), '~w is a must', [T]),
-                                        format(atom(Z7), 'How about ~w?', [T]),
-                                        format(atom(Z8), '~w is the serie of the moment', [T]),
-                                        format(atom(Z9), 'Shame on you if you have\'t watch ~w yet. Fix it now!', [T]),
-                                        format(atom(Z10), 'Maybe ~w?', [T]).
+response([suggest, action, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(action, L, U), random(L, U, ID), tvshow_title(ID,T), tvshow_network(ID,N),
+                                        format(atom(Z), 'I also like action! If you have ~w you could watch "~w"', [N,T]),
+                                        format(atom(Z1), 'Lots of adrenaline with "~w"', [T]),
+                                        format(atom(Z2), 'If you like action, "~w" is for you', [T]),
+                                        format(atom(Z3), 'In "~w" there are spectacular fights', [T]).
 
+response([suggest, comedy, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(comedy, L, U), random(L, U, ID), tvshow_title(ID,T), tvshow_network(ID,N),
+                                        format(atom(Z), 'With "~w" you may laugh to death', [T]),
+                                        format(atom(Z1), 'If you want a light and fun tv show, "~w" is for you', [T]),
+                                        format(atom(Z2), 'When I saw "~w" i was in tears', [T]),
+                                        format(atom(Z3), '~w always has good comedies, but "~w" is the best one', [N,T]).
+
+response([suggest, drama, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(drama, L, U), random(L, U, ID), tvshow_title(ID,T),
+                                        format(atom(Z), 'Here "~w" for the drama queen', [T]),
+                                        format(atom(Z1), '"~w", serious and deep', [T]),
+                                        format(atom(Z2), '"~w", because drama is always a good choice', [T]),
+                                        format(atom(Z3), 'I SUGGEST "~w", WITH MY DRAMA VOICE', [T]).
+
+response([suggest, fantasy, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(fantasy, L, U), random(L, U, ID), tvshow_title(ID,T),
+                                        format(atom(Z), '"~w" to escape reality', [T]),
+                                        format(atom(Z1), 'It\'s dangerous to go alone. Take this: "~w"', [T]),
+                                        format(atom(Z2), '"~w" is amazing !!!!! (Five exclamation marks, the sure sign of an insane mind)', [T]),
+                                        format(atom(Z3), 'Now, let me see..."~w"!', [T]).
+
+response([suggest, horror, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(horror, L, U), random(L, U, ID), tvshow_title(ID,T),
+                                        format(atom(Z), 'Hmm? Oh, yes, of course. Here we are "~w"', [T]),
+                                        format(atom(Z1), 'You are a brave person. Here "~w"', [T]),
+                                        format(atom(Z2), 'If you really insist..."~w"', [T]),
+                                        format(atom(Z3), '"~w", so scary', [T]).
+
+response([suggest, science, tv, show], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        tvshow_range_id(science, L, U), random(L, U, ID), tvshow_title(ID,T),
+                                        format(atom(Z), 'So much universe, and so little time. Start from "~w"', [T]),
+                                        format(atom(Z1), 'I\'m sorry, Dave. I\'m afraid I can...Sorry,lapsus. Here the serie: "~w"', [T]),
+                                        format(atom(Z2), 'Mmm...maybe you could watch "~w"', [T]),
+                                        format(atom(Z3), 'Maybe "~w"', [T]).
+
+%Questa forse si potrebbe levare
 response([suggest, G, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         tvshow_range_id(G, L, U),
                                         random(L, U, ID), tvshow_title(ID,T), tvshow_genre(ID,G),
