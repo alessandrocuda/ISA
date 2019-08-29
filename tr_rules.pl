@@ -65,19 +65,63 @@ response([suggest, movies], [action(Z), action(Z1), action(Z2), action(Z3), acti
                                         format(atom(Z9), 'Everyone has already seen these movies!\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z10), 'You might like these three movies!,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]).
 
-response([suggest, G, movie], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
-                                        movie_range_id(G, L, U), random(L, U, ID), movie_title(ID,T),
-                                        format(atom(Z), 'Maybe this one? "~w"!', [T]),
-                                        format(atom(Z1), 'You might like this movie! "~w" ', [T]),
-                                        format(atom(Z2), '"~w" is a very nice movie! you should watch it', [T]),
-                                        format(atom(Z3), '"~w" is awsome! Everyone has already seen this movie!', [T]),
-                                        format(atom(Z4), 'Maybe this one? ~w You might like this movie!', [T]),
-                                        format(atom(Z5), 'A super movie is definitely "~w"! you should watch it !', [T]),
-                                        format(atom(Z6), 'Oh, let me think ... maybe "~w"?', [T]),
-                                        format(atom(Z7), 'One...two...three...maybe "~w" could be your movie! ', [T]),
-                                        format(atom(Z8), 'Of course! I\'m here for you! here\'s a movie: "~w" ', [T]),
-                                        format(atom(Z9), 'I\'m your ultimate expert, here\'s a movie: "~w" ', [T]),
-                                        format(atom(Z10), 'mmm well, it\'s hard to decide but "~w" is a good movie to watch!', [T]).
+response([suggest, action, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(action, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Always live the action, I have the movie for you! "~w"!', [T]),
+                                        format(atom(Z1), 'Tired of your usual life? a little action is the one for you! Watch "~w"!', [T]),
+                                        format(atom(Z2), 'If you want some adrenaline watch "~w"!', [T]),
+                                        format(atom(Z3), 'Once someone said: live every day like the last one! Sooo, watch "~w"!', [T]).
+
+response([suggest, animation, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(animation, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Can I join you in watching an animated film? We can see together "~w"!', [T]),
+                                        format(atom(Z1), 'I like your choice! here a film for you: "~w" ', [T]),
+                                        format(atom(Z2), 'it\'s never too late to remember childhood, here is an animated film for you "~w"', [T]),
+                                        format(atom(Z3), '"~w" is awsome! watch it with frinds or family!', [T]).
+
+response([suggest, drama, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(drama, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Hold on to the chair and watch "~w"!', [T]),
+                                        format(atom(Z1), 'Lie down comfortably on the sofa and enjoy this drama movie: "~w" ', [T]),
+                                        format(atom(Z2), 'Mmm, if you want a drama movie watch this one: "~w"', [T]),
+                                        format(atom(Z3), 'drama? are you sure? well, here it is: "~w"!', [T]).
+
+response([suggest, horror, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(horror, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'If you want something really scary "~w"!', [T]),
+                                        format(atom(Z1), 'If you are not a scared person you could watch "~w" ', [T]),
+                                        format(atom(Z2), 'Well, do you want a terrific evening? Here a movie for you: "~w"', [T]),
+                                        format(atom(Z3), 'why say no if you want to see a horror movie, watch "~w"!', [T]).
+
+response([suggest, musical, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(musical, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Let\'s dance and let\'s get fun with "~w"!', [T]),
+                                        format(atom(Z1), 'do you want to ge "~w" ', [T]),
+                                        format(atom(Z2), 'if you want to have fun watch "~w" is a very nice movie! you should watch it', [T]),
+                                        format(atom(Z3), 'Well, do you want a musical movie right? let me think a little bit... Here it is: "~w"!', [T]).
+
+response([suggest, romance, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(romance, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Do you feel that little bit of romance in the air? Well it\'s a good moment for a romance movie! Watch "~w"!', [T]),
+                                        format(atom(Z1), 'It was a sweet day, wasn\'t it? watch "~w" as romance movie ', [T]),
+                                        format(atom(Z2), '"~w" is a very romantic movie! you should watch it', [T]),
+                                        format(atom(Z3), 'It\'s timeeee for Loooove! Watch "~w"', [T]).
+
+response([suggest, science, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(science, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Wait a minute, I take my nerd glasses and look for a science movie for you...Here one for you: "~w"!', [T]),
+                                        format(atom(Z1), 'Roger! a science movie for you is coming in one, two, three..."~w"! ', [T]),
+                                        format(atom(Z2), 'I\'m traveling on the moon in this moment, maybe i\'m the right person to advise you on a science movie! Watch "~w"!', [T]),
+                                        format(atom(Z3), '"~w" is awsome! A science movie is always a good choice!!', [T]).
+
+response([suggest, fantasy, movie], [action(Z), action(Z1), action(Z2), action(Z3)]):-  
+                                        movie_range_id(fantasy, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Isn\'t there a thrill, suspense, excitement in a fantasy story? Here one for you: "~w"!', [T]),
+                                        format(atom(Z1), 'Do you want to escape from reality and live in another world for a moment? I understand you! here\'s a movie for you: "~w" ', [T]),
+                                        format(atom(Z2), 'Fantasy? YEEEES my favorite genre! "~w" is a very nice movie! you should watch it', [T]),
+                                        format(atom(Z3), '"~w" is awsome! Live a fantasy story for a moment! enjoy it!', [T]).
+
+
 
 response([suggest, G, movies], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         movie_range_id(G, L, U),

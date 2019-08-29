@@ -69,7 +69,7 @@ keyword(sports):- !.
 % Main
 isa :- 
 	init,
-    write('Hi, I\'m ISA your personal assistant for movies and TV show!?'),nl,
+    write('Hi, I\'m ISA your personal assistant for movies and TV show!'),nl,
     repeat,
         write('> '),
         read_atomics(Input),nl,
