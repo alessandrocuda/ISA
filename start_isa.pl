@@ -12,5 +12,4 @@
 :- reconsult('tr_rules.pl').
 :- reconsult('isa.pl').
 
-
 :- isa.
