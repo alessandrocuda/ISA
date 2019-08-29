@@ -5,7 +5,7 @@
 /****************************************************************************/
 % check_quit(controlList)
 check_quit(X) :-  
-        ( member('quit', X); member('exit', X) ), !.
+        ( member('quit', X); member('stop', X); member('exit', X) ), !.
 
 /****************************************************************************/
 % response(InputKeywordList, responseList)
@@ -229,8 +229,8 @@ response([suggest, science, tv, show], [ action(Z), action(Z1), action(Z2), acti
 response([suggest, G, tv, shows], [ action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]) :-  
                                         tvshow_range_id(G, L, U),
                                         random(L, U, ID), tvshow_title(ID, T), tvshow_genre(ID, G),
-                                        random(L, U, ID1), tvshow_title(ID1, T1), tvshow_genre(ID1, G1),
-                                        random(L, U, ID2), tvshow_title(ID2, T2), tvshow_genre(ID2, G2),
+                                        random(L, U, ID1), tvshow_title(ID1, T1), tvshow_genre(ID1, G),
+                                        random(L, U, ID2), tvshow_title(ID2, T2), tvshow_genre(ID2, G),
                                         ID \== ID1, ID1 \== ID2, ID \== ID2,
                                         format(atom(Z), '"~w", "~w" and "~w" are three good options', [T, T1, T2]), 
                                         format(atom(Z1), 'I don\'t know which is better between "~w", "~w" and "~w"', [T, T1, T2]),
@@ -262,6 +262,10 @@ response([need, help, movie], X) :- response([suggest, movie], X), !.
 response([need, help, movies], X) :- response([suggest, movies], X), !.
 response([need, help, tv, show], X) :- response([suggest, tv, show], X), !.
 response([need, help, tv, shows], X) :- response([suggest, tv, shows], X), !.
+response([need, suggest, movie], X) :- response([suggest, movie], X), !.
+response([need, suggest, movies], X) :- response([suggest, movies], X), !.
+response([need, suggest, tv, show], X) :- response([suggest, tv, show], X), !.
+response([need, suggest, tv, shows], X) :- response([suggest, tv, shows], X), !.
 response([movie], X) :- response([suggest, movie], X), !.
 response([movies], X) :- response([suggest, movies], X), !.
 response([tv, show], X) :- response([suggest, tv, show], X), !.

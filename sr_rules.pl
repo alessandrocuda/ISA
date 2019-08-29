@@ -19,8 +19,10 @@ sr([like, it|X], [i_like|X]).
 sr([love, it|X], [i_like|X]).
 sr([oh, cool|X], [i_like|X]).
 sr([cool|X], [i_like|X]).
+sr([nice|X], [i_like|X]).
 sr([oh, amazing|X], [i_like|X]).
 sr([amazing|X], [i_like|X]).
+sr([awesome|X], [i_like|X]).
 sr([wow|X], [i_like|X]).
 
 sr([saw|X], [seen|X]).

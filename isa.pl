@@ -85,8 +85,8 @@ isa :-
         simplify(Input, S1),
         find_keywords(S1,KeyWords),
         response(KeyWords, X),
-        random_member(action(N), X),
         debug_write(debug_off, Input, S1, KeyWords, X),
+        random_member(action(N), X),
         write(N), nl,
     check_quit(Input),
     !.
