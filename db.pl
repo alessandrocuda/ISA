@@ -150,6 +150,12 @@ display_movie(ID) :-
 %?-display_movie(1099). -> [1099, The Blind Side, sport, 2009]
 
 %TVShows (id 2000-2059)
+tvshow_range_id(action, 2000, 2009).
+tvshow_range_id(comedy, 2010, 2019).
+tvshow_range_id(drama, 2020, 2029).
+tvshow_range_id(fantasy, 2030, 2039).
+tvshow_range_id(horror, 2040, 2049).
+tvshow_range_id(science, 2050, 2059).
 %Action
 tvshow(2000,'Daredevil',action,'Netflix').
 tvshow(2001,'The Punisher',action,'Netflix').
