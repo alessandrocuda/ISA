@@ -1,5 +1,6 @@
 % % rules order matters!
 % phase 1
+sr([what,can,you,do,for,me| X], [help| X]).
 sr(['hello!'|X],[hello|X]).
 sr(['hello,'|X],[hello|X]).
 sr(['hello.'|X],[hello|X]).
@@ -32,8 +33,9 @@ sr([what, is, going, on| X ],[how_bot|X]).
 sr([who, are, you | X ],[who_bot|X]).
 sr([who, is, there | X ],[who_bot|X]).
 sr([who, '\'',s, there | X ],[who_bot|X]).
+sr([who, am,i | X ],[who_you_are|X]).
 
-
+sr([what, about | X], [suggest | X]).
 sr([what, movie| X], [suggest, movie | X]).
 sr([what, film| X], [suggest, movie | X]).
 sr([what, movies| X], [suggest, movies | X]).
@@ -63,7 +65,8 @@ sr([recommend | X], [suggest | X]).
 sr([advice | X], [suggest | X]).
 sr([tell | X], [suggest | X]).
 sr([propose | X], [suggest | X]).
-sr([help | X], [suggest | X]).
+sr([about | X], [suggest | X]).
+%sr([help | X], [suggest | X]).
 sr([can | X], X).
 sr([to | X], X).
 sr([a | X], X).
@@ -83,6 +86,13 @@ sr([love | X], [suggest | X]).
 sr([would | X], X).
 sr([want | X], [suggest |X]).
 sr([wanted | X], [suggest |X]).
+
+sr([ok, thanks, you| X],[thank | X]).
+sr([ok, thank, you| X],[thank | X]).
+sr([ok, thanks| X],[thank | X]).
+sr([ok, thank| X],[thank | X]).
+sr([thanks| X],[thank | X]).
+
 
 
 sr([, | X], X).
