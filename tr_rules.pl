@@ -92,5 +92,20 @@ response([suggest, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3), a
                                         format(atom(Z9), '~w-~w, ~w-~w and ~w-~w', [G, T, G1, T1, G2, T2]),
                                         format(atom(Z10), 'Maybe as a ~w you could watch ~w, or ~w as ~w, or, finally, ~w as ~w ', [G, T, T1, G1, T2, G2]).                                       
 
+
+response([suggest, G, movie], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
+                                        movie_range_id(G, L, U), random(L, U, ID), movie_title(ID,T),
+                                        format(atom(Z), 'Maybe this one? "~w"!', [T]),
+                                        format(atom(Z1), 'You might like this movie! "~w" ', [T]),
+                                        format(atom(Z2), '"~w" is a very nice movie! you should watch it', [T]),
+                                        format(atom(Z3), '"~w" is awsome! Everyone has already seen this movie!', [T]),
+                                        format(atom(Z4), 'Maybe this one? ~w You might like this movie!', [T]),
+                                        format(atom(Z5), 'A super movie is definitely "~w"! you should watch it !', [T]),
+                                        format(atom(Z6), 'Oh, let me think ... maybe "~w"?', [T]),
+                                        format(atom(Z7), 'One...two...three...maybe "~w" could be your movie! ', [T]),
+                                        format(atom(Z8), 'Of course! I\'m here for you! here\'s a movie: "~w" ', [T]),
+                                        format(atom(Z9), 'I\'m your ultimate expert, here\'s a movie: "~w" ', [T]),
+                                        format(atom(Z10), 'mmm well, it\'s hard to decide but "~w" is a good movie to watch!', [T]).
+
 %format('Maybe this one? ~w ', [T]))
 %.

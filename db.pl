@@ -1,4 +1,15 @@
 %Movies (id 1000-1099)
+movie_range_id(action, 1000, 1009).
+movie_range_id(animation, 1010,1019).
+movie_range_id(comedy, 1020,1029).
+movie_range_id(drama, 1030,1039).
+movie_range_id(horror, 1040,1049).
+movie_range_id(musical, 1050,1059).
+movie_range_id(romance, 1060,1069).
+movie_range_id(science, 1070,1079).
+movie_range_id(fantasy, 1080,1089).
+movie_range_id(sport, 1090, 1099).
+
 %Action
 movie(1000,'Black Panter',action,2018).
 movie(1001,'Mad Max: Fury Road',action,2015).
@@ -48,7 +59,6 @@ movie(1038,'Taxi Driver',drama,1976).
 movie(1039,'Vertigo',drama,1958).
 
 %Horror
-movie(1040,'Suspiria',horror,1977).
 movie(1041,'Shaun of the Dead',horror,2004).
 movie(1042,'Psycho',horror,1960).
 movie(1043,'The Babadook',horror,2014).
@@ -96,7 +106,6 @@ movie(1078,'Star Wars: Episode V - The Empire Strikes Back',science,1980).
 movie(1079,'District 9',science,2009).
 
 %Fantasy
-movie(1080,'Eragon',fantasy,2008).
 movie(1081,'Dark Crystal',fantasy,1982).
 movie(1082,'Dragonheart',fantasy,1996).
 movie(1083,'Stardust',fantasy,2007).
@@ -125,6 +134,7 @@ movie_genre(ID,G) :- movie(ID,_,G,_).
 movie_year(ID,Y) :- movie(ID,_,_,Y).
 movie(T) :- movie(_,T,_,_).
 movie_per_genre(T,G) :- movie(_,T,G,_).
+
 
 display_movie(ID) :-
     movie(ID,T,G,Y),
