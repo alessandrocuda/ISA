@@ -16,6 +16,7 @@ You need to install [swi-prolog](https://www.swi-prolog.org/): a Prolog interpre
 ```bash
 # Clone ISA Project
 git clone https://github.com/alessandrocuda/ISA.git
+cd ISA
 
 # Start swi-prolog
 swipl
