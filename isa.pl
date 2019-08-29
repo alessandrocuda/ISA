@@ -89,7 +89,8 @@ isa :-
         random_member(action(N), X),
         write(N), nl,
     check_quit(Input),
-    !.
+    !,
+    halt.
 
 debug_write(Predicate, Input, S_input, K_input, Response) :-
     (   debug_enabled(Predicate)
