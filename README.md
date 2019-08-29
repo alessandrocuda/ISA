@@ -63,7 +63,7 @@ or if you want to read some other examples: [USE_CASES.md](https://github.com/al
 
 or write an email to:
 - [alessandro@cudazzo.com](mailto:alessandro@cudazzo.com)
-- [giuliavolpi25.93@gmail.com](giuliavolpi25.93@gmail.com)
+- <giuliavolpi25.93@gmail.com>
 
 ## License
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
@@ -72,4 +72,4 @@ This library is free software; you can redistribute it and/or modify it under
 the terms of the MIT license. 
 
 - **[MIT license](LICENSE)**
-- Copyright 2019 ©  <a href="https://alessandrocudazzo.it" target="_blank">Alessandro Cudazzo</a> - [Giulia Volpi](giuliavolpi25.93@gmail.com)
+- Copyright 2019 ©  <a href="https://alessandrocudazzo.it" target="_blank">Alessandro Cudazzo</a> - <a href="mailto:giuliavolpi25.93@gmail.com">Giulia Volpi</a>
