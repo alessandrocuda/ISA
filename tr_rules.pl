@@ -14,7 +14,7 @@ response(exit, 'So Long, and Thanks for All the Fish!') :- !.
 
 response([], [ action('Sorry I didn\'t understand, can you repeat?')]) :- !.
 
-response([help],[ action('Sure, I\'m your personal assistant for movies and tv shows!\nFor example you can ask me "what movie do you suggest me?" or "i want to watch a tv show"')]):-!.
+response([help], [ action('Sure, I\'m your personal assistant for movies and tv shows!\nFor example you can ask me "what movie do you suggest me?" or "i want to watch a tv show"')]):-!.
 
 response([need, help], X):- response([help], X), !.
 
