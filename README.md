@@ -51,7 +51,7 @@ swipl -s start_isa.pl
 or if you want to read some other examples navigat to [USE_CASES.md](https://github.com/alessandrocuda/ISA/blob/master/USE_CASES.md)
 
 ## TODO
-- [ ] Add more response to ISA.
+- [ ] Add more answers to ISA.
 
 ## Contributing
  
