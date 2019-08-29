@@ -47,6 +47,17 @@ keyword(shows):- !.
 keyword(help):- !.
 keyword(need):- !.
 
+keyword(action):- !. 
+keyword(animation):- !.
+keyword(comedy):- !.
+keyword(drama):- !.
+keyword(horror):- !.
+keyword(musical):- !.
+keyword(romance):- !.
+keyword(science):- !.
+keyword(fantasy):- !.
+keyword(sports):- !.
+
 
 /****************************************************************************/
 % Main
