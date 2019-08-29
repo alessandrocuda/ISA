@@ -42,18 +42,36 @@ response([suggest, movies], [action(Z)]):-
                                         ID \== ID1, ID1 \== ID2, ID \== ID2,
                                         format(atom(Z), 'Maybe as a ~w you could watch ~w,\nor as ~w: ~w, or maybe as ~w: ~w ', [G, T, G1, T1, G2, T2]).
 
-response([suggest, tv, show], [action(Z), action(Z1), action(Z2)]):-  
-                                        random(2000, 2059, ID), tvshow_title(ID,T),
-                                        format(atom(Z), 'Maybe this one? ~w ', [T]),
-                                        format(atom(Z1), 'This? ~w ', [T]),
-                                        format(atom(Z2), '~w is a very nice movie! you should watch it', [T]).
+response([suggest, tv, show], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
+                                        random(2000, 2059, ID), tvshow_title(ID,T), tvshow_genre(ID,G),tvshow_network(ID,N),
+                                        format(atom(Z), 'Maybe you could see ~w', [T]),
+                                        format(atom(Z1), 'If you like ~w genre you might watch ~w', [G,T]),
+                                        format(atom(Z2), '~w is a popular tv show from ~w', [T,N]),
+                                        format(atom(Z3), '~w is a very interesting tv show, I recommend it', [T]),
+                                        format(atom(Z4), 'If you haven\'t done it yet, you can watch ~w', [T]),
+                                        format(atom(Z5), '~w from ~w it\s a very rewarded tv show, you can\'t miss it', [T,N]),
+                                        format(atom(Z6), '~w is a must', [T]),
+                                        format(atom(Z7), 'How about ~w?', [T]),
+                                        format(atom(Z8), '~w is the serie of the moment', [T]),
+                                        format(atom(Z9), 'Shame on you if you have\'t watch ~w yet. Fix it now!', [T]),
+                                        format(atom(Z10), 'Maybe ~w?', [T]).
 
-response([suggest, tv, shows], [action(Z)]):-  
+response([suggest, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]):-  
                                         random(2000, 2059, ID), tvshow_title(ID,T), tvshow_genre(ID,G),
                                         random(2000, 2059, ID1), tvshow_title(ID1,T1), tvshow_genre(ID1,G1),
                                         random(2000, 2059, ID2), tvshow_title(ID2,T2), tvshow_genre(ID2,G2),
                                         ID \== ID1, ID1 \== ID2, ID \== ID2,
-                                        format(atom(Z), 'Maybe as a ~w you could watch ~w,\nor as ~w: ~w, or maybe as ~w: ~w ', [G, T, G1, T1, G2, T2]).                                        
+                                        format(atom(Z), '~w, ~w and ~w are three good options', [T, T1, T2]), 
+                                        format(atom(Z1), 'I don\'t know which is better between ~w, ~w and ~w', [T, T1, T2]),
+                                        format(atom(Z2), 'If you like ~w genre you might watch ~w, but also ~w and ~w are good series', [G, T, T1, T2]),
+                                        format(atom(Z3), 'A marathon of these three: ~w, ~w and ~w', [T, T1, T2]),
+                                        format(atom(Z4), 'I prefer ~w because ~w is my favorite genre, but also ~w and ~w are quality series', [T, G, T1, T2]),
+                                        format(atom(Z5), 'One of ~w, ~w and ~w', [T, T1, T2]),
+                                        format(atom(Z6), 'These are masterpieces: ~w, ~w and ~w', [T, T1, T2]),
+                                        format(atom(Z7), 'If you like ~w you could watch ~w, but also ~w and ~w are good', [G, T, T1, T2]),
+                                        format(atom(Z8), 'I can\'t choose between ~w, ~w and ~w', [T, T1, T2]),
+                                        format(atom(Z9), '~w-~w, ~w-~w and ~w-~w', [G, T, G1, T1, G2, T2]),
+                                        format(atom(Z10), 'Maybe as a ~w you could watch ~w, or ~w as ~w, or, finally, ~w as ~w ', [G, T, T1, G1, T2, G2]).                                       
 
 %format('Maybe this one? ~w ', [T]))
 %.
