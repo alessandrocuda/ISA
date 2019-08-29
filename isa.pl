@@ -41,6 +41,7 @@ simplify([],[]).
 % Keyboard List
 keyword(hello):- !.
 keyword(who_bot):- !.
+keyword(who_you_are):- !.
 keyword(how_bot):- !.
 keyword(quit):- !.
 keyword(exit):- !.
@@ -52,6 +53,9 @@ keyword(show):- !.
 keyword(shows):- !.
 keyword(help):- !.
 keyword(need):- !.
+keyword(other):- !.
+keyword(thank):- !.
+
 
 keyword(action):- !. 
 keyword(animation):- !.
@@ -75,6 +79,7 @@ isa :-
         read_atomics(Input),nl,
         write('Input: '), write(Input),nl,nl,
         simplify(Input, S1),
+        write('simplify: '), write(S1),nl,nl,
         find_keywords(S1,KeyWords),
         % simplify(S1,KeyWords),
         write('Keywords: '), write(KeyWords),nl,nl,

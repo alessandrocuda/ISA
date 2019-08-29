@@ -6,18 +6,16 @@ response(exit, 'So Long, and Thanks for All the Fish!') :- !.
 
 response([], [action('sorry I didn\'t understand, can you repeat?')]):- !.
 
-response([hello], [action('Oh hi!'), 
-                    action('Hello!'),
-                    action('hi!'),
-                    action('Hello, i\'m here to help! do you need an advice for a movie?'),
-                    action('hi, do you need help?'),
-                    action('hi, how can i help you?!')]):- !.
+response([help],[action('Sure, I\'m your personal assistant for movies and tv shows!\nFor example you can ask me "what movie do you suggest me?" or "i want to watch a tv show"')]):-!.
+response([need, help], X):- response([help], X), !.
 
+response([hello], [ action('Hello, i\'m here to help! type "help"!'),
+                    action('hi, do you need help? type "help"'),
+                    action('hi, type "help" if you need help')]):- !.
 
-
-response([who_bot], [action('Hi, I\'m your personal assistant, how can I help you?'), 
+response([who_bot], [action('Hi, I\'m your personal assistant, if you need help, type "help"'), 
                     action('Hi, I\'m ISA, your personal assistant for tv shows and movies'),
-                    action('Hi, I\'m ISA!'),
+                    action('Hi, I\'m ISA! type "help" if you need help'),
                     action('Hi, I\'m a super computer here to help you choose a movie or a TV series')]):- !.
 
 response([hello, who_bot], X):- response([who_bot], X), !.
@@ -25,6 +23,15 @@ response([hello, who_bot], X):- response([who_bot], X), !.
 response([how_bot], [action('I\'m fine thanks! do you need some advice for a movie or tv show?')]):- !.
 response([hello, how_bot], X):- response([how_bot], X), !.
 
+response([who_you_are], [action('Well, i don\'t know that! but i\'m here to help you!'),
+                         action('I dont\'t know but i\'m your personal assistant for movies and tv shows',
+                         action('is it really importat? ahahah sorry i\'m just kidding you! i\'m here to help you with movie and tv shows!')),
+                         action('... 1,000,000 ............ 10,000,000 years later...42? ')]):- !.
+
+response([hello, who_you_are], [action('Hi! Well, i don\'t know that! but i\'m here to help you!'),
+                         action('Hello! I dont\'t know but i\'m your personal assistant for movies and tv shows',
+                         action('Hello! is it really importat? ahahah sorry i\'m just kidding you! i\'m here to help you with movie and tv shows!')),
+                         action('... 1,000,000 ............ 10,000,000 years later...42? ')]):- !.
 
 response([you_are,Y], [action(Z),action(Z1),action(Z2)]):- 
                                             name(Y), 
@@ -205,4 +212,31 @@ response([suggest, G, tv, shows], [action(Z), action(Z1), action(Z2), action(Z3)
                                         format(atom(Z9), '~w-~w, ~w-~w and ~w-~w', [G, T, G1, T1, G2, T2]),
                                         format(atom(Z10), 'Maybe as a ~w you could watch ~w, or ~w as ~w, or, finally, ~w as ~w ', [G, T, T1, G1, T2, G2]).                                       
 
-response([suggest], X) :- random_member(T, [[suggest, movie], [suggest, movies],[suggest, tv,show],[suggest, tv, shows]]), response(T,X), !.
+%response([suggest], X) :- random_member(T, [[suggest, movie], [suggest, movies],[suggest, tv,show],[suggest, tv, shows]]), response(T,X), !.
+response([suggest],[action('i can help you but you have to tell me if you want watch movies or tv shows')]).
+response([suggest, movie, suggest], X):- response([suggest, movie], X), !.
+response([suggest, movies, suggest], X):- response([suggest, movies], X), !.
+response([suggest, tv, show, suggest], X):- response([suggest, tv, show], X), !.
+response([suggest, tv, shows, suggest], X):- response([suggest, tv, shows], X), !.
+response([suggest, other, movie], X):- response([suggest, movie], X), !.
+response([suggest, other, movies], X):- response([suggest, movies], X), !.
+response([suggest, other, tv, show], X):- response([suggest, tv, show], X), !.
+response([suggest, other, tv, shows], X):- response([suggest, tv, shows], X), !.
+response([need, movie], X):- response([suggest, movie], X), !.
+response([need, movies], X):- response([suggest, movies], X), !.
+response([need, tv, show], X):- response([suggest, tv, show], X), !.
+response([need, tv, shows], X):- response([suggest, tv, shows], X), !.
+response([need, help, movie], X):- response([suggest, movie], X), !.
+response([need, help, movies], X):- response([suggest, movies], X), !.
+response([need, help, tv, show], X):- response([suggest, tv, show], X), !.
+response([need, help, tv, shows], X):- response([suggest, tv, shows], X), !.
+
+response([other, movie], X):- response([other], X), !.
+response([other, movies], X):- response([other], X), !.
+response([other, tv, show], X):- response([other], X), !.
+response([other, tv, shows], X):- response([other], X), !.
+response([other], [action('Sure just ask me again what do you want to watch!')]):- !.
+
+response([thank], [ action('Your Welcome!'),
+                     action('sure! if you need just ask'),
+                     action('I\'m here always for you!')]):- !.
