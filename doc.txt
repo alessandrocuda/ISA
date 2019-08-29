@@ -11,8 +11,11 @@ other?
 what,can,i,see,?
 do you know other movies?
 can you tell me another movie?
+
 i don't like/love it
 i like/love it
+oh cool
+amazing
 
 
 

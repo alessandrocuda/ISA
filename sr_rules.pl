@@ -1,6 +1,29 @@
+% File SR_RULES.PL
+% MIT License
+% Copyright (c) [2019] [Alessandro Cudazzo, Giulia Volpi]
+
 % % rules order matters!
 % phase 1
 sr([what,can,you,do,for,me| X], [help| X]).
+sr([what,do,you,do | X], [help| X]).
+sr([what,can,i,see | X], [help_as_suggest| X]).
+sr([what, can, i, watch | X], [help_as_suggest| X]).
+sr([already, seen, it | X], [seen | X]).
+sr([i, don, '\'', t, like, it | X], [dont_like | X]).
+sr([i, don, '\'', t, love, it | X], [dont_like | X]).
+sr([i, do, not, like, it | X], [dont_like | X]).
+sr([i, do, not, love, it | X], [dont_like | X]).
+sr([i, like, it | X], [i_like | X]).
+sr([i, love, it | X], [i_like | X]).
+sr([like, it | X], [i_like | X]).
+sr([love, it | X], [i_like | X]).
+sr([oh, cool | X], [i_like | X]).
+sr([cool | X], [i_like | X]).
+sr([oh, amazing | X], [i_like | X]).
+sr([amazing | X], [i_like | X]).
+sr([wow | X], [i_like | X]).
+
+sr([saw | X], [seen|X]).
 sr(['hello!'|X],[hello|X]).
 sr(['hello,'|X],[hello|X]).
 sr(['hello.'|X],[hello|X]).
@@ -92,23 +115,10 @@ sr([ok, thank, you| X],[thank | X]).
 sr([ok, thanks| X],[thank | X]).
 sr([ok, thank| X],[thank | X]).
 sr([thanks| X],[thank | X]).
-
-
+sr([another| X],[other | X]).
 
 sr([, | X], X).
 sr([; | X], X).
 sr([! | X], X).
 sr([? | X], X).
 sr(['.' | X], X).
-
-
-
-
-
-
-
-
-
-
-
-%sr([i, am, Y|X],[tu_sei, Y|X]):- name(Y).

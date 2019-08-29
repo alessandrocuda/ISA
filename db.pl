@@ -1,3 +1,7 @@
+% File DB.PL
+% MIT License
+% Copyright (c) [2019] [Alessandro Cudazzo, Giulia Volpi]
+
 %Movies (id 1000-1099)
 movie_range_id(action, 1000, 1009).
 movie_range_id(animation, 1010,1019).

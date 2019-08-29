@@ -1,30 +1,31 @@
-name(giulia).
-name(alessandro).
+% File ISA.PL
+% MIT License
+% Copyright (c) [2019] [Alessandro Cudazzo, Giulia Volpi]
 
-user_name.
-
-quit :-
-    nl,
-    response(exit, Exit_msg),
-    write(Exit_msg).
+debug_enabled(debug_on).
+%debug_enabled(debug_off).
 
 init :-
 	nl,
     write(' -------------------------------------------------------------------------------------'),nl,
-    write('|                                     ISA v0.9.1                                      |'),nl,
+    write('|                                     ISA v0.9.8                                      |'),nl,
     write(' -------------------------------------------------------------------------------------'),nl,
     write('|                      A Personal Assitant for movie and tv show!                     |'),nl,
     write(' -------------------------------------------------------------------------------------'),nl,
     write('|   The answer to the ultimate question of life, the universe and everything is 42.   |'),nl,
     write(' -------------------------------------------------------------------------------------'),nl,nl.
 
+quit :-
+    nl,
+    response(exit, Exit_msg),
+    write(Exit_msg).
 
 /****************************************************************************/
 % find_keywords(+InputList,?KeyWordList)
 
-find_keywords([],[]).
-find_keywords([H|T],[H|T1]) :- keyword(H), !, find_keywords(T,T1).
-find_keywords([_|T],T1) :- find_keywords(T,T1).
+find_keywords([], []).
+find_keywords([H|T], [H|T1]) :- keyword(H), !, find_keywords(T, T1).
+find_keywords([_|T], T1) :- find_keywords(T, T1).
 
 /****************************************************************************/
 % simplify(+InputList,?WordList)
@@ -55,8 +56,12 @@ keyword(help):- !.
 keyword(need):- !.
 keyword(other):- !.
 keyword(thank):- !.
+keyword(help_as_suggest):- !.
+keyword(seen):- !.
+keyword(i_like):- !.
+keyword(dont_like):- !.
 
-
+%Genre Keyword
 keyword(action):- !. 
 keyword(animation):- !.
 keyword(comedy):- !.
@@ -77,15 +82,19 @@ isa :-
     repeat,
         write('> '),
         read_atomics(Input),nl,
-        write('Input: '), write(Input),nl,nl,
         simplify(Input, S1),
-        write('simplify: '), write(S1),nl,nl,
         find_keywords(S1,KeyWords),
-        % simplify(S1,KeyWords),
-        write('Keywords: '), write(KeyWords),nl,nl,
-        response(KeyWords, X),nl,
-        write('Response: '), write(X),nl,nl,
+        response(KeyWords, X),
         random_member(action(N), X),
+        debug_write(debug_off, Input, S1, KeyWords, X),
         write(N),nl,
         check_quit(Input),
         !.
+
+debug_write(Predicate, Input, S_input, K_input, Response):-
+    (   debug_enabled(Predicate)
+    ->  write('Input: '), write(Input),nl,nl,
+        write('simplify: '), write(S_input),nl,nl,
+        write('Keywords: '), write(K_input),nl,nl,
+        write('Response: '), write(Response),nl,nl
+    ; true).
