@@ -276,6 +276,10 @@ response([G, movie], X) :- response([suggest, G, movie], X), !.
 response([G, movies], X) :- response([suggest, G, movies], X), !.
 response([G, tv, show], X) :- response([suggest, G, tv, show], X), !.
 response([G, tv, shows], X) :- response([suggest, G, tv, shows], X), !.
+response([movie, G], X) :- response([suggest, G, movie], X), !.
+response([movies, G], X) :- response([suggest, G, movies], X), !.
+response([tv, show, G], X) :- response([suggest, G, tv, show], X), !.
+response([tv, shows, G], X) :- response([suggest, G, tv, shows], X), !.
 response([movie], X) :- response([suggest, movie], X), !.
 response([movies], X) :- response([suggest, movies], X), !.
 response([tv, show], X) :- response([suggest, tv, show], X), !.
