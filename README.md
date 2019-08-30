@@ -1,5 +1,5 @@
 # ISA
-ISA is a ChatterBot AI, was born from the idea of developing an artificial intelligence expert in advising films and TV shows.   
+ISA is a Rule-Based system ChatterBot AI, was born from the idea of developing an artificial intelligence expert in advising films and TV shows.   
 ChatterBot is the generic name for programs derived from Weizenbaum's original Eliza program, which mimicked a therapist.
 >ISA shows how pattern-matching rules can be used to generate realistic conversations. 
 
