@@ -63,6 +63,7 @@ movie(1038, 'Taxi Driver', drama, 1976).
 movie(1039, 'Vertigo', drama, 1958).
 
 %Horror
+movie(1040, 'The Exorcist', horror, 1973).
 movie(1041, 'Shaun of the Dead', horror, 2004).
 movie(1042, 'Psycho', horror, 1960).
 movie(1043, 'The Babadook', horror, 2014).
@@ -110,6 +111,7 @@ movie(1078, 'Star Wars: Episode V - The Empire Strikes Back', science, 1980).
 movie(1079, 'District 9', science, 2009).
 
 %Fantasy
+movie(1080, 'harry potter and the philosopher\'s stone', fantasy, 2001).
 movie(1081, 'Dark Crystal', fantasy, 1982).
 movie(1082, 'Dragonheart', fantasy, 1996).
 movie(1083, 'Stardust', fantasy, 2007).

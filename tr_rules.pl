@@ -1,6 +1,15 @@
 % File TR_RULES.PL
 % MIT License
 % Copyright (c) [2019] [Alessandro Cudazzo, Giulia Volpi]
+/****************************************************************************/
+% random3(ID, ID1, ID2, L, U)
+random3(ID, ID1, ID2, L, U):- 
+   	random_between(L, U, ID),
+    repeat,
+	    random_between(L, U, ID1),
+    	random_between(L, U, ID2),
+    	dif(ID, ID1), dif(ID, ID2), dif(ID1, ID2),
+    !.
 
 /****************************************************************************/
 % check_quit(controlList)
@@ -63,10 +72,10 @@ response([suggest, movie], [ action(Z), action(Z1), action(Z2), action(Z3), acti
                                         format(atom(Z10), 'Mmm well, it\'s hard to decide but "~w" is a good movie to watch!', [T]).
 
 response([suggest, movies], [ action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]) :-  
-                                        random(1000, 1099, ID), movie_title(ID, T), movie_genre(ID, G),
-                                        random(1000, 1099, ID1), movie_title(ID1, T1), movie_genre(ID1, G1),
-                                        random(1000, 1099, ID2), movie_title(ID2, T2), movie_genre(ID2, G2),
-                                        ID \== ID1, ID1 \== ID2, ID \== ID2,
+                                        random_between(1000, 1033, ID), random_between(1034, 1066, ID1), random_between(1067, 1099, ID2), 
+                                        movie_title(ID, T), movie_genre(ID, G),
+                                        movie_title(ID1, T1), movie_genre(ID1, G1), 
+                                        movie_title(ID2, T2), movie_genre(ID2, G2),
                                         format(atom(Z), 'Maybe I could recommend 3 films by genre,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z1), 'Mmm well, it\'s hard to decide but I could suggest you 3 films by genre,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z2), 'One...two...three...movies could be the correct answer,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
@@ -136,11 +145,10 @@ response([suggest, fantasy, movie], [ action(Z), action(Z1), action(Z2), action(
                                         format(atom(Z3), '"~w" is awesome! Live a fantasy story for a moment! Enjoy it!', [T]).
 
 response([suggest, G, movies], [ action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]) :-  
-                                        movie_range_id(G, L, U),
-                                        random(L, U, ID), movie_title(ID, T), movie_genre(ID, G),
-                                        random(L, U, ID1), movie_title(ID1, T1), movie_genre(ID1, G1),
-                                        random(L, U, ID2), movie_title(ID2, T2), movie_genre(ID2, G2),
-                                        ID \== ID1, ID1 \== ID2, ID \== ID2,
+                                        movie_range_id(G, L, U), random3(ID, ID1, ID2, L, U),
+                                        movie_title(ID, T), movie_genre(ID, G),
+                                        movie_title(ID1, T1), movie_genre(ID1, G),
+                                        movie_title(ID2, T2), movie_genre(ID2, G),
                                         format(atom(Z), 'Maybe I could recommend 3 films by genre,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z1), 'Mmm well, it\'s hard to decide but I could suggest you 3 films by genre,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
                                         format(atom(Z2), 'One...two...three...movies could be the correct answer,\nas a ~w you could watch "~w",\nor "~w" as ~w,\nor maybe "~w" as ~w ', [G, T, T1, G1, T2, G2]),
@@ -168,10 +176,9 @@ response([suggest, tv, show], [ action(Z), action(Z1), action(Z2), action(Z3), a
                                         format(atom(Z10), 'Maybe "~w"?', [T]).
 
 response([suggest, tv, shows], [ action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]) :-  
-                                        random(2000, 2059, ID), tvshow_title(ID, T), tvshow_genre(ID, G),
-                                        random(2000, 2059, ID1), tvshow_title(ID1, T1), tvshow_genre(ID1, G1),
-                                        random(2000, 2059, ID2), tvshow_title(ID2, T2), tvshow_genre(ID2, G2),
-                                        ID \== ID1, ID1 \== ID2, ID \== ID2,
+                                        random(2000, 2020, ID), tvshow_title(ID, T), tvshow_genre(ID, G),
+                                        random(2021, 2036, ID1), tvshow_title(ID1, T1), tvshow_genre(ID1, G1),
+                                        random(2037, 2059, ID2), tvshow_title(ID2, T2), tvshow_genre(ID2, G2),
                                         format(atom(Z), '"~w", "~w" and "~w" are three good options', [T, T1, T2]), 
                                         format(atom(Z1), 'I don\'t know which is better between "~w", "~w" and "~w"', [T, T1, T2]),
                                         format(atom(Z2), 'If you like ~w genre you might watch "~w", but also "~w" and "~w" are good series', [G, T, T1, T2]),
@@ -227,11 +234,10 @@ response([suggest, science, tv, show], [ action(Z), action(Z1), action(Z2), acti
                                         format(atom(Z3), 'Maybe "~w"', [T]).
 
 response([suggest, G, tv, shows], [ action(Z), action(Z1), action(Z2), action(Z3), action(Z4), action(Z5), action(Z6), action(Z7), action(Z8), action(Z9), action(Z10)]) :-  
-                                        tvshow_range_id(G, L, U),
-                                        random(L, U, ID), tvshow_title(ID, T), tvshow_genre(ID, G),
-                                        random(L, U, ID1), tvshow_title(ID1, T1), tvshow_genre(ID1, G),
-                                        random(L, U, ID2), tvshow_title(ID2, T2), tvshow_genre(ID2, G),
-                                        ID \== ID1, ID1 \== ID2, ID \== ID2,
+                                        tvshow_range_id(G, L, U), random3(ID, ID1, ID2, L, U),
+                                        tvshow_title(ID, T), tvshow_genre(ID, G),
+                                        tvshow_title(ID1, T1), tvshow_genre(ID1, G),
+                                        tvshow_title(ID2, T2), tvshow_genre(ID2, G),
                                         format(atom(Z), '"~w", "~w" and "~w" are three good options', [T, T1, T2]), 
                                         format(atom(Z1), 'I don\'t know which is better between "~w", "~w" and "~w"', [T, T1, T2]),
                                         format(atom(Z2), 'If you like ~w genre you might watch "~w", but also "~w" and "~w" are good series', [G, T, T1, T2]),
@@ -266,6 +272,10 @@ response([need, suggest, movie], X) :- response([suggest, movie], X), !.
 response([need, suggest, movies], X) :- response([suggest, movies], X), !.
 response([need, suggest, tv, show], X) :- response([suggest, tv, show], X), !.
 response([need, suggest, tv, shows], X) :- response([suggest, tv, shows], X), !.
+response([G, movie], X) :- response([suggest, G, movie], X), !.
+response([G, movies], X) :- response([suggest, G, movies], X), !.
+response([G, tv, show], X) :- response([suggest, G, tv, show], X), !.
+response([G, tv, shows], X) :- response([suggest, G, tv, shows], X), !.
 response([movie], X) :- response([suggest, movie], X), !.
 response([movies], X) :- response([suggest, movies], X), !.
 response([tv, show], X) :- response([suggest, tv, show], X), !.
